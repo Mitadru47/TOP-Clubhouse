@@ -16,7 +16,7 @@ async function main(){
 
 // View Engine Setup
 
-app.set("view", __dirname + "/views");
+app.set("views", __dirname + "/views");
 app.set("view engine", "pug");
 
 // Routing
