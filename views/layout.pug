@@ -4,6 +4,26 @@ html
     head 
         title Clubhouse 
         link(rel="stylesheet", href="/stylesheets/styles.css")
+
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap", rel="stylesheet")
     
     body 
+
+        div#navbar
+
+            div#navhead
+                h1 Welcome to the Clubhouse!
+
+            div#navlinks
+
+                div 
+                    a(href="/users") Users
+                
+                div
+                    a(href="/messages") Messages
+
+        hr
+
         block content
