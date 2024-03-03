@@ -19,6 +19,9 @@ async function main(){
 app.set("views", __dirname + "/views");
 app.set("view engine", "pug");
 
+// Static Folder Access - "public"
+app.use(express.static(__dirname + '/public'));
+
 // Routing
 
 const indexRouter = require("./routes/index");
