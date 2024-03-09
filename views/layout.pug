@@ -16,13 +16,15 @@ html
             div#navhead
                 h1 Welcome to the Clubhouse!
 
-            div#navlinks
-
-                div 
-                    a(href="/users") Users
+            if(currentUser)
                 
-                div
-                    a(href="/messages") Messages
+                div#navlinks
+
+                    div 
+                        a(href="/users") Users
+                    
+                    div
+                        a(href="/messages") Messages
 
         hr
 

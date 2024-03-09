@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+    h2 Log In!
+
+    form(action="/log-in" method="POST")
+
+        input(type="text" placeholder="Username" name="username")
+        input(type="text" placeholder="Password" name="password")
+
+        button(type="submit") Log in
+
+    br
+
+    a(href="/sign-up") Sign up
