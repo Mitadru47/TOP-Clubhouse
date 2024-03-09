@@ -20,8 +20,10 @@ html
                 
                 div#navlinks
 
-                    div 
-                        a(href="/users") Users
+                    if(currentUser.membership_status === "VIP")
+                    
+                        div 
+                            a(href="/users") Users
                     
                     div
                         a(href="/messages") Messages
