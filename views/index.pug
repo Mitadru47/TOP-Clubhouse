@@ -1,4 +1,14 @@
 extends layout 
 
 block content 
-    h2 Index
+
+    if(currentUser)
+    
+        h2 Index
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/index/user/create") Sign up
