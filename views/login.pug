@@ -2,15 +2,22 @@ extends layout
 
 block content 
 
-    h2 Log In!
+    if(currentUser)
 
-    form(action="/log-in" method="POST")
+        h2 You are logged in! 
+        a(href="/log-out") Log out
 
-        input(type="text" placeholder="Username" name="username")
-        input(type="text" placeholder="Password" name="password")
+    else
 
-        button(type="submit") Log in
+        h2 Log In!
 
-    br
+        form(action="/log-in" method="POST")
 
-    a(href="/index/user/create") Sign up
+            input(type="text" placeholder="Username" name="username")
+            input(type="text" placeholder="Password" name="password")
+
+            button(type="submit") Log in
+
+        br
+
+        a(href="/index/user/create") Sign up

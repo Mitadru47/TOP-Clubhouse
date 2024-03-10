@@ -96,4 +96,15 @@ app.use("/index", indexRouter);
 app.get("/", (req, res) => res.render("login"));
 app.post("/log-in", passport.authenticate("local", { successRedirect: "/index", failureRedirect: "/"}));
 
+app.get("/log-out", (req, res, next) => {
+
+    req.logout((error) => {
+
+        if(error)
+            return next(error);
+
+        res.redirect("/");
+    });
+});
+
 module.exports = app;
