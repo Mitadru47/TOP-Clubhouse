@@ -50,6 +50,23 @@ button:hover{
     background-color: black;
 }
 
+dl{
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    padding: 30px;
+    padding-bottom: 10px;
+}
+
+dt{
+    margin-bottom: 10px;
+}
+
+dd{
+    margin-bottom: 50px;
+}
+
 #navbar{
     
     display: flex;
@@ -64,4 +81,12 @@ button:hover{
     
     justify-content: end;
     gap: 20px;
+}
+
+#info{
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 0.8rem;
 }

@@ -6,6 +6,23 @@ block content
     
         h2 Index
 
+        each message in messages 
+
+            dl 
+
+                dt #[strong #{message.title}]
+                dd #{message.text}
+
+                div#info
+                
+                    if currentUser.membership_status === "VIP"
+                        p #{message.creator.username}
+
+                    else 
+                        p You do not have clearance to see creator info!
+
+                    p #{message.timestamp}
+
     else 
 
         h2 Cannot Access Clubhouse!

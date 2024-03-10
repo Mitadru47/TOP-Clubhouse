@@ -1,8 +1,12 @@
 const asyncHandler = require("express-async-handler");
 
+const Message = require("../models/message");
+
 // Index Home Page
 exports.index = asyncHandler(async (req, res, next) => {
-    res.render("index");
+
+    const messages = await Message.find().populate("creator").exec();
+    res.render("index", { messages: messages });
 });
 
 // User List
