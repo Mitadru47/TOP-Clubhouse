@@ -36,7 +36,7 @@ router.post("/user/:id/update", userController.user_update_post);
 /// MESSAGE ROUTES ///
 
 // GET - Message List
-router.get("/messages", messageController.message_list);
+router.get("/messages/:id", messageController.message_list);
 
 // GET - Message Detail
 router.get("/message/:id", messageController.message_detail);

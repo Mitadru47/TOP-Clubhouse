@@ -8,7 +8,7 @@ block content
 
         div#myTools
         
-            a(href="/index/messages") My Messages
+            a(href="/index/messages/" + currentUser._id) My Messages
             a(href="/index/message/create") Create Message
 
         each message in messages 

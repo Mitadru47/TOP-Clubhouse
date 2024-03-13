@@ -1,0 +1,28 @@
+extends layout 
+
+block content 
+
+    if(currentUser)
+    
+        h2 My Messages
+
+        if messages.length > 0
+        
+            each message in messages 
+
+                dl
+                    dt 
+                        a(href="/index/message/" + message._id) #[strong #{message.title}]
+                    dd #{message.text}
+
+                    p #{message.timestamp}
+
+        else 
+            p You have not created any messages yet!
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/index/user/create") Sign up

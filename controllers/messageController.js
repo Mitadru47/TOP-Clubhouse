@@ -5,8 +5,8 @@ const Message = require("../models/message");
 // Message List
 exports.message_list = asyncHandler(async (req, res, next) => {
 
-    
-    res.send("NOT IMPLEMENTED: Message List");
+    const messages = await Message.find({creator: req.params.id}).exec();
+    res.render("message_list", { messages: messages });
 });
 
 // Message Detail
