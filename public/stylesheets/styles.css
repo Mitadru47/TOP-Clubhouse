@@ -56,7 +56,7 @@ dl{
     border-radius: 10px;
 
     padding: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 dt{
@@ -89,4 +89,5 @@ dd{
     justify-content: space-between;
 
     font-size: 0.8rem;
+    padding: 0 20px;
 }

@@ -1,0 +1,47 @@
+extends layout
+
+block content
+
+    if currentUser
+    
+        h2 #{message.title}
+        p #{message.text}
+
+        br
+
+        if currentUser._id.equals(message.creator.id)
+            
+            p Created by you
+            p #{message.timestamp}
+
+            div#options
+            
+                br
+
+                a(href="/index/message/:id/update") Edit Message
+                a(href="/index/message/:id/delete") Delete Message
+
+
+        else if currentUser.membership_status === "VIP"
+            
+            p #{message.creator.username}
+            p #{message.timestamp}
+
+            div#options
+            
+                br
+
+                a(href="/index/message/:id/delete") Delete Message
+
+        else 
+            p You do not have clearance to see creator info!
+            p #{message.timestamp}
+
+        
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/index/user/create") Sign up 

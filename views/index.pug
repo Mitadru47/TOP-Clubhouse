@@ -6,16 +6,26 @@ block content
     
         h2 Index
 
+        div#myTools
+        
+            a(href="/index/messages") My Messages
+            a(href="/index/message/create") Create Message
+
         each message in messages 
 
-            dl 
+            dl
 
-                dt #[strong #{message.title}]
+                dt 
+                    a(href="/index/message/" + message._id) #[strong #{message.title}]
+
                 dd #{message.text}
 
                 div#info
                 
-                    if currentUser.membership_status === "VIP"
+                    if currentUser._id.equals(message.creator._id)
+                        p Created by you
+                    
+                    else if currentUser.membership_status === "VIP"
                         p #{message.creator.username}
 
                     else 
