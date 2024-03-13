@@ -35,17 +35,17 @@ router.post("/user/:id/update", userController.user_update_post);
 
 /// MESSAGE ROUTES ///
 
+// GET - Message Create | NOTE This must come before routes that display Messages(uses id).
+router.get("/message/create", messageController.message_create_get);
+
+// POST - Message Create
+router.post("/message/create", messageController.message_create_post);
+
 // GET - Message List
 router.get("/messages/:id", messageController.message_list);
 
 // GET - Message Detail
 router.get("/message/:id", messageController.message_detail);
-
-// GET - Message Create
-router.get("/message/create", messageController.message_create_get);
-
-// POST - Message Create
-router.get("/message/create", messageController.message_create_post);
 
 // GET - Message Delete
 router.get("/message/:id/delete", messageController.message_delete_get);

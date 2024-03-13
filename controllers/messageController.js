@@ -18,7 +18,7 @@ exports.message_detail = asyncHandler(async (req, res, next) => {
 
 // Message Create GET
 exports.message_create_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Message Create GET");
+    res.render("message_create");
 });
 
 // Message Create POST

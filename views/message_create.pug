@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+    if currentUser 
+
+        h2 Create Message
+
+        form(action="/index/message/create" method="POST")
+
+            input(name="title" placeholder="Title" required)
+            
+            br
+            textarea(cols="75" rows="15" name="text" placeholder="Message" required)
+            
+            br
+
+            input(name="timestamp" type="date" required)
+            input(name="creator" value=currentUser._id disabled)
+
+            button(type="submit") Create
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/index/user/create") Sign up

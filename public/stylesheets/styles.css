@@ -22,9 +22,11 @@ a:hover{
     font-size: 1.5rem;
 }
 
-input{
+input, textarea{
 
     padding: 10px;
+
+    margin-bottom: 5px;
     margin-right: 5px;
 
     font-family: "Ubuntu Mono", monospace;
