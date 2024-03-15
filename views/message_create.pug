@@ -8,15 +8,15 @@ block content
 
         form(action="/index/message/create" method="POST")
 
-            input(name="title" placeholder="Title" required)
+            input(name="title" placeholder="Title" value=(message===undefined ? "" : message.title) required)
             
             br
-            textarea(cols="75" rows="15" name="text" placeholder="Message" required)
+            textarea(cols="75" rows="15" name="text" placeholder="Message" value=(message===undefined ? "" : message.text) required)
             
             br
 
-            input(name="timestamp" type="date" required)
-            input(name="creator" value=currentUser._id disabled)
+            input(name="timestamp" type="date" value=(message===undefined ? "" : message.timestamp) required)
+            input(name="creator" type="text" value=currentUser._id readonly)
 
             button(type="submit") Create
 

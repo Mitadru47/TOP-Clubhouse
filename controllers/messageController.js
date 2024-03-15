@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const { body, validationResult } = require("express-validator");
 
 const Message = require("../models/message");
 
@@ -22,9 +23,39 @@ exports.message_create_get = asyncHandler(async (req, res, next) => {
 });
 
 // Message Create POST
-exports.message_create_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Message Create POST");
-});
+exports.message_create_post = [
+
+    body("title", "Title cannot be empty!").trim().isLength({ min: 1 }).escape(),
+    body("text", "Message cannot be empty!").trim().isLength({ min: 1 }).escape(),
+
+    body("creator").escape(),
+    body("timestamp", "Invalid date!").toDate(),
+    
+    asyncHandler(async (req, res, next) => {
+    
+        const error = validationResult(req);
+        const message = new Message({
+
+            title: req.body.title,
+            text: req.body.text,
+
+            creator: req.body.creator,
+            timestamp: req.body.timestamp
+        });
+
+        if(!error.isEmpty){
+            
+            res.render("message_create", { message: message });
+            return;            
+        }
+
+        else{
+
+            await message.save();
+            res.redirect(message.url);
+        }
+    })
+];
 
 // Message Delete GET
 exports.message_delete_get = asyncHandler(async (req, res, next) => {
