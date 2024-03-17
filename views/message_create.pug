@@ -6,16 +6,16 @@ block content
 
         h2 Create Message
 
-        form(action="/index/message/create" method="POST")
+        form(method="POST")
 
             input(name="title" placeholder="Title" value=(message===undefined ? "" : message.title) required)
             
             br
-            textarea(cols="75" rows="15" name="text" placeholder="Message" value=(message===undefined ? "" : message.text) required)
+            textarea(cols="75" rows="15" name="text" placeholder="Message" required) #{message===undefined ? "" : message.text}
             
             br
 
-            input(name="timestamp" type="date" value=(message===undefined ? "" : message.timestamp) required)
+            input(name="timestamp" type="date" value=(message===undefined ? "" : message.formattedDate) required)
             input(name="creator" type="text" value=currentUser._id readonly)
 
             button(type="submit") Create

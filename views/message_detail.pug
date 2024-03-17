@@ -12,7 +12,7 @@ block content
         if currentUser._id.equals(message.creator.id)
             
             p Created by you
-            p #{message.timestamp}
+            p #{message.beautifiedDate}
 
             div#options
             
@@ -25,7 +25,7 @@ block content
         else if currentUser.membership_status === "VIP"
             
             p #{message.creator.username}
-            p #{message.timestamp}
+            p #{message.beautifiedDate}
 
             div#options
             
@@ -35,7 +35,7 @@ block content
 
         else 
             p You do not have clearance to see creator info!
-            p #{message.timestamp}
+            p #{message.beautifiedDate}
 
         
 

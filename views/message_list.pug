@@ -15,7 +15,7 @@ block content
                         a(href="/index/message/" + message._id) #[strong #{message.title}]
                     dd #{message.text}
 
-                    p #{message.timestamp}
+                    p #{message.beautifiedDate}
 
         else 
             p You have not created any messages yet!

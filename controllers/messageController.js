@@ -73,10 +73,45 @@ exports.message_delete_post = asyncHandler(async (req, res ,next) => {
 
 // Message Update GET
 exports.message_update_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Message Update GET");
+
+    const message = await Message.findById(req.params.id).exec();
+    res.render("message_create", { message: message });
 });
 
 // Message Update POST
-exports.message_update_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Message Update POST");
-});
+exports.message_update_post = [
+    
+    body("title", "Title cannot be empty!").trim().isLength({ min: 1 }).escape(),
+    body("text", "Message cannot be empty!").trim().isLength({ min: 1 }).escape(),
+
+    body("creator").escape(),
+    body("timestamp", "Invalid date!").toDate(),
+
+    asyncHandler(async (req, res, next) => {
+
+        const error = validationResult(req);
+
+        const message = new Message({
+
+            title: req.body.title,
+            text: req.body.text,
+
+            creator: req.body.creator,
+            timestamp: req.body.timestamp,
+
+            _id: req.params.id
+        });
+
+        if(!error.isEmpty){
+
+            res.render("message_create", { message: message });
+            return;
+        }
+
+        else{
+        
+            const updatedMessage = await Message.findByIdAndUpdate(req.params.id, message, {}).exec();
+            res.redirect(updatedMessage.url);
+        }
+    })
+];
