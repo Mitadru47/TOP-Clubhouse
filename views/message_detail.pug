@@ -18,8 +18,8 @@ block content
             
                 br
 
-                a(href="/index/message/:id/update") Edit Message
-                a(href="/index/message/:id/delete") Delete Message
+                a(href="/index/message/" + message._id + "/update") Edit Message
+                a(href="/index/message/" + message._id + "/delete") Delete Message
 
 
         else if currentUser.membership_status === "VIP"
@@ -31,7 +31,7 @@ block content
             
                 br
 
-                a(href="/index/message/:id/delete") Delete Message
+                a(href="/index/message/" + message._id + "/delete") Delete Message
 
         else 
             p You do not have clearance to see creator info!

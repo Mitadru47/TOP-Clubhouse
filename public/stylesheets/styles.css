@@ -37,7 +37,9 @@ input, textarea{
 
 button{
 
+    margin: 5px;
     padding: 10px;
+
     font-family: "Ubuntu Mono", monospace;
 
     border: 1px solid gray;
@@ -92,4 +94,29 @@ dd{
 
     font-size: 0.8rem;
     padding: 0 20px;
+}
+
+#cancelLink{
+
+    margin: 5px;
+    padding: 10px;
+
+    border: 1px solid gray;
+    border-radius: 10px;
+    
+    font-size: small;
+
+    color: black;
+    background-color: white;
+
+    cursor:default;
+    text-decoration: none;
+}
+
+#cancelLink:hover{
+
+    font-size: small;
+    
+    color: white;
+    background-color: black;
 }

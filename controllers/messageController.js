@@ -59,12 +59,16 @@ exports.message_create_post = [
 
 // Message Delete GET
 exports.message_delete_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Message Delete GET");
+
+    const message = await Message.findById(req.params.id).populate("creator").exec();
+    res.render("message_delete", { message: message });
 });
 
 // Message Delete POST
 exports.message_delete_post = asyncHandler(async (req, res ,next) => {
-    res.send("NOT IMPLEMENTED: Message Delete POST");
+    
+    await Message.findByIdAndDelete(req.body.messageId).exec();
+    res.redirect("/index");
 });
 
 // Message Update GET
