@@ -19,16 +19,6 @@ exports.user_detail = asyncHandler(async (req, res, next) => {
     res.send("NOT IMPLEMENTED: User Detail - " + req.params.id);
 });
 
-// User Create GET
-exports.user_create_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Create GET");
-});
-
-// User Create POST
-exports.user_create_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Create POST");
-});
-
 // User Delete GET
 exports.user_delete_get = asyncHandler(async (req, res, next) => {
     res.send("NOT IMPLEMENTED: User Delete GET");

@@ -15,12 +15,6 @@ router.get("/users", userController.user_list);
 // GET - User Detail
 router.get("/user/:id", userController.user_detail);
 
-// GET - User Create
-router.get("/user/create", userController.user_create_get);
-
-// POST - User Create
-router.post("/user/create", userController.user_create_post);
-
 // GET - User Delete
 router.get("/user/:id/delete", userController.user_delete_get);
 

@@ -107,4 +107,29 @@ app.get("/log-out", (req, res, next) => {
     });
 });
 
+app.get("/sign-up", (req, res) => res.render("signup"));
+app.post("/sign-up", async (req, res, next) => {
+
+    try{
+
+        const user = new User({ 
+            
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+
+            username: req.body.username,
+            password: req.body.password,
+
+            membership_status: req.body.membership_status
+        });
+
+        await user.save();
+        res.redirect("/");
+    }
+
+    catch(error){
+        return next(error);
+    }
+});
+
 module.exports = app;

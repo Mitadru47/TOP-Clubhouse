@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+
+    h2 Sign Up!
+
+    form(action="/sign-up" method="POST")
+
+        input(type="text" placeholder="Firstname" name="firstname")
+        input(type="text" placeholder="Lastname" name="lastname")
+
+        input(type="text" placeholder="Username" name="username")
+        input(type="text" placeholder="Password" name="password")
+
+        br
+
+        input(value="Member" name="membership_status" readOnly)
+        button(type="submit") Sign up
+
+
+    p Already a member?
+    a(href="/") Log in
