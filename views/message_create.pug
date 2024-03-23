@@ -20,6 +20,12 @@ block content
 
             button(type="submit") Create
 
+            if(message !== undefined)
+                a#cancelLink(href="/index/message/" + message._id) Cancel
+
+            else 
+                a#cancelLink(href="/index") Cancel
+
     else 
 
         h2 Cannot Access Clubhouse!

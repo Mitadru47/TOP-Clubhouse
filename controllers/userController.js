@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
+const User = require("../models/user");
 const Message = require("../models/message");
 
 // Index Home Page
@@ -11,7 +12,11 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 // User List
 exports.user_list = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User List");
+
+    const users = await User.find().exec();
+    const messages = await Message.find().exec();
+
+    res.render("user_list", { users: users, messages: messages });
 });
 
 // User Detail

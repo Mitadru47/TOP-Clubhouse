@@ -5,6 +5,8 @@ block content
     if(currentUser)
 
         h2 You are logged in! 
+
+        a(href="/index/user/" + currentUser._id) Account
         a(href="/log-out") Log out
 
     else

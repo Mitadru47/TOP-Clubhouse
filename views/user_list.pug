@@ -1,0 +1,47 @@
+extends layout 
+
+block content 
+
+    if(currentUser)
+
+        h2 Clubmates 
+
+        if(currentUser.membership_status === "VIP")
+            
+            each user in users 
+
+                div#userList
+
+                    div#userDetails
+
+                        if currentUser._id.equals(user._id)
+                            a#name(href=user.url) #{user.firstname} (You)
+
+                        else
+                            a#name(href=user.url) #{user.firstname}
+
+                        if user.membership_status === ""
+                            p#status Member
+
+                        else
+                            p#status #{user.membership_status}
+
+                    div#messageCount
+
+                        - var counter = 0
+
+                        each message in messages
+                            if message.creator.equals(user._id)
+                                - counter = counter + 1
+
+                        p Message(s): #{counter}
+
+        else 
+            p You do not have clearance to access this page!
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/sign-up") Sign up

@@ -19,17 +19,15 @@ html
             if(currentUser)
                 
                 div#navlinks
-
-                    if(currentUser.membership_status === "VIP")
-                    
-                        div 
-                            a(href="/users") Clubmates
+                
+                    div 
+                        a(href="/index/users") Clubmates
                     
                     div 
                         a(href="/index") Messages
 
-                    div
-                        a(href="/") Yo #{currentUser.username}!
+                    div#accountLink
+                        a(href="/") Yo #{currentUser.firstname}!
 
         hr
 
