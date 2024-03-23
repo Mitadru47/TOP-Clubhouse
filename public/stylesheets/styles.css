@@ -104,6 +104,19 @@ dd{
     color: white;
 }
 
+#userLink{
+
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+#userLink:hover{
+    text-decoration: underline;
+}
+
 #info{
 
     display: flex;

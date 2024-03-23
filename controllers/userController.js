@@ -13,15 +13,20 @@ exports.index = asyncHandler(async (req, res, next) => {
 // User List
 exports.user_list = asyncHandler(async (req, res, next) => {
 
-    const users = await User.find().exec();
-    const messages = await Message.find().exec();
+    const [users, messages] = await Promise.all([
+    
+        User.find().exec(),
+        Message.find().exec()
+    ]);
 
     res.render("user_list", { users: users, messages: messages });
 });
 
 // User Detail
 exports.user_detail = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Detail - " + req.params.id);
+
+    const user = await User.findById(req.params.id).exec();
+    res.render("user_detail", { user: user });
 });
 
 // User Delete GET

@@ -5,39 +5,40 @@ block content
     if(currentUser)
 
         h2 Clubmates 
+    
+        each user in users 
 
-        if(currentUser.membership_status === "VIP")
-            
-            each user in users 
+            div#userList
 
-                div#userList
+                div#userDetails
 
-                    div#userDetails
+                    if currentUser._id.equals(user._id)
+                        a#name(href=user.url) #{user.firstname} (You)
 
-                        if currentUser._id.equals(user._id)
-                            a#name(href=user.url) #{user.firstname} (You)
-
-                        else
+                    else
+                        
+                        if(currentUser.membership_status === "VIP")
                             a#name(href=user.url) #{user.firstname}
 
-                        if user.membership_status === ""
-                            p#status Member
+                        else 
+                            p#name [Redacted]
 
-                        else
-                            p#status #{user.membership_status}
 
-                    div#messageCount
+                    if user.membership_status === ""
+                        p#status Member
 
-                        - var counter = 0
+                    else
+                        p#status #{user.membership_status}
 
-                        each message in messages
-                            if message.creator.equals(user._id)
-                                - counter = counter + 1
+                div#messageCount
 
-                        p Message(s): #{counter}
+                    - var counter = 0
 
-        else 
-            p You do not have clearance to access this page!
+                    each message in messages
+                        if message.creator.equals(user._id)
+                            - counter = counter + 1
+
+                    p Message(s): #{counter}
 
     else 
 

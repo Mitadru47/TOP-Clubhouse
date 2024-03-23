@@ -16,10 +16,10 @@ block content
             div#info
             
                 if currentUser._id.equals(message.creator._id)
-                    p Created by you
+                    a(href=message.creator.url)#userLink Created by you
                 
                 else if currentUser.membership_status === "VIP"
-                    p #{message.creator.username}
+                    a(href=message.creator.url)#userLink #{message.creator.username}
 
                 else 
                     p You do not have clearance to see creator info!

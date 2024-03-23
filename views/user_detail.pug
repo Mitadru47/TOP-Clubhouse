@@ -1,0 +1,48 @@
+extends layout 
+
+block content 
+
+    if currentUser 
+
+        h2 Account 
+
+        p #[strong Name:] 
+        p #{user.firstname} #{user.lastname}
+
+        br
+
+        p #[strong Membership Status:]
+
+        if user.membership_status === ""
+            p Member
+        
+        else
+            p #{user.membership_status} 
+
+        br
+
+        p #[strong Username:] #{user.username}
+
+        if currentUser._id.equals(user._id)
+            p #[strong Password:] #{user.password}
+
+        else 
+            p #[strong Password:] [Redacted]
+        
+        br
+        br
+
+        if (currentUser.membership_status === "VIP") && (currentUser._id.equals(user._id) === false)
+            a(href="/index/user/" + user._id + "/update") Edit Membership Status
+
+        else 
+            a(href="/index/user/" + user._id + "/update") Edit Details
+
+        a(href="/index/user/" + user._id + "/delete") Delete Account       
+
+    else 
+
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/sign-up") Sign up
