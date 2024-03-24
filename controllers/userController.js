@@ -50,10 +50,26 @@ exports.user_delete_post = asyncHandler(async (req, res, next) => {
 
 // User Update GET
 exports.user_update_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Update GET");
+
+    const user = await User.findById(req.params.id);
+    res.render("signup", { user: user });
 });
 
 // User Update POST
 exports.user_update_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Delete POST");
+
+    const user = { 
+            
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+
+        username: req.body.username,
+        password: req.body.password,
+
+        membership_status: req.body.membership_status,
+        _id: req.body.userId
+    };
+
+    const updatedUser = await User.findByIdAndUpdate(req.body.userId, user, {}).exec();
+    res.redirect(updatedUser.url);
 });

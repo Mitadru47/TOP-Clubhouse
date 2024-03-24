@@ -2,15 +2,81 @@ extends layout
 
 block content 
 
-    h2 Sign Up!
+    if currentUser && (user != null) && ((currentUser._id.equals(user._id) === true) || (currentUser.membership_status === "VIP"))
+        h2 Edit Account
 
-    form(action="/sign-up" method="POST")
+    else
+        h2 Sign Up!
 
-        input(type="text" placeholder="Firstname" name="firstname")
-        input(type="text" placeholder="Lastname" name="lastname")
+    if currentUser
 
-        input(type="text" placeholder="Username" name="username")
-        input(type="text" placeholder="Password" name="password")
+        if currentUser._id.equals(user._id) === true && currentUser.membership_status !== "VIP"
+
+            form(action="/index/user/" + user._id + "/update" method="POST")
+
+                input(type="text" placeholder="Firstname" name="firstname" value=(user===undefined ? "" : user.firstname))
+                input(type="text" placeholder="Lastname" name="lastname" value=(user===undefined ? "" : user.lastname))
+
+                input(type="text" placeholder="Username" name="username" value=(user===undefined ? "" : user.username))
+                input(type="text" placeholder="Password" name="password" value=(user===undefined ? "" : user.password))
+
+                br
+
+                input(name="membership_status" value=(user.membership_status==="" ? "Member" : user.membership_status) readOnly)
+                input(name="userId" type="text" value=user._id readonly)
+
+                button(type="submit") Update
+                a#cancelLink(href=user.url) Cancel
+
+        else if currentUser._id.equals(user._id) !== true && currentUser.membership_status === "VIP"
+
+            form(action="/index/user/" + user._id + "/update" method="POST")
+
+                input(type="text" placeholder="Firstname" name="firstname" value=(user===undefined ? "" : user.firstname) readOnly)
+                input(type="text" placeholder="Lastname" name="lastname" value=(user===undefined ? "" : user.lastname) readOnly)
+
+                input(type="text" placeholder="Username" name="username" value=(user===undefined ? "" : user.username) readOnly)
+                input(type="text" placeholder="Password" name="password" value=(user===undefined ? "" : user.password) readOnly)
+
+                br
+
+                select(name="membership_status" value=(user.membership_status==="" ? "Member" : user.membership_status))
+                    option(value="Admin") Member
+                    option(value="Admin") Admin
+                    option(value="Admin") VIP
+
+                input(name="userId" type="text" value=user._id readonly)
+                
+                button(type="submit") Update
+                a#cancelLink(href=user.url) Cancel
+
+        else if currentUser._id.equals(user._id) === true && currentUser.membership_status === "VIP"
+
+            form(action="/index/user/" + user._id + "/update" method="POST")
+
+                input(type="text" placeholder="Firstname" name="firstname" value=(user===undefined ? "" : user.firstname))
+                input(type="text" placeholder="Lastname" name="lastname" value=(user===undefined ? "" : user.lastname))
+
+                input(type="text" placeholder="Username" name="username" value=(user===undefined ? "" : user.username))
+                input(type="text" placeholder="Password" name="password" value=(user===undefined ? "" : user.password))
+
+                br
+
+                input(name="membership_status" value=(user.membership_status==="" ? "Member" : user.membership_status))
+                input(name="userId" type="text" value=user._id readonly)
+
+                button(type="submit") Update
+                a#cancelLink(href=user.url) Cancel
+
+    else 
+
+        form(action="/sign-up" method="POST")
+
+        input(type="text" placeholder="Firstname" name="firstname" value=(user===undefined ? "" : user.firstname))
+        input(type="text" placeholder="Lastname" name="lastname" value=(user===undefined ? "" : user.lastname))
+
+        input(type="text" placeholder="Username" name="username" value=(user===undefined ? "" : user.username))
+        input(type="text" placeholder="Password" name="password" value=(user===undefined ? "" : user.password))
 
         br
 
@@ -18,5 +84,5 @@ block content
         button(type="submit") Sign up
 
 
-    p Already a member?
-    a(href="/") Log in
+        p Already a member?
+        a(href="/") Log in

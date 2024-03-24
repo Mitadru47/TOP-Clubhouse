@@ -25,7 +25,7 @@ block content
                     if currentUser._id.equals(message.creator._id)
                         a(href=message.creator.url)#userLink Created by you
                     
-                    else if currentUser.membership_status === "VIP"
+                    else if currentUser.membership_status === "VIP" || currentUser.membership_status === "Admin"
                         a(href=message.creator.url)#userLink #{message.creator.username}
 
                     else 

@@ -37,10 +37,21 @@ block content
         if (currentUser.membership_status === "VIP") && (currentUser._id.equals(user._id) === false)
             a(href="/index/user/" + user._id + "/update") Edit Membership Status
 
+        else if (currentUser.membership_status === "Admin") && (currentUser._id.equals(user._id) === false)
+
+            br
+            br
+
+            p#warning You do not have access to edit accounts.
+
         else 
             a(href="/index/user/" + user._id + "/update") Edit Account
 
-        a(href="/index/user/" + user._id + "/delete") Delete Account       
+        if (currentUser.membership_status === "Admin") && (currentUser._id.equals(user._id) === false)
+            p#warning You do not have access to delete accounts.
+
+        else
+            a(href="/index/user/" + user._id + "/delete") Delete Account       
 
     else 
 

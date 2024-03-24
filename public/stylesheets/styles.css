@@ -23,7 +23,7 @@ a:hover{
     font-size: 1.5rem;
 }
 
-input, textarea{
+input, textarea, select{
 
     padding: 10px;
 
@@ -180,4 +180,8 @@ dd{
 
     margin-top: 10px;
     margin-left: 20px;
+}
+
+#warning{
+    padding-left: 20px;
 }

@@ -4,7 +4,11 @@ block content
 
     if currentUser 
 
-        h2 Create Message
+        if message === undefined 
+            h2 Create Message
+
+        else 
+            h2 Edit Message
 
         form(method="POST")
 
