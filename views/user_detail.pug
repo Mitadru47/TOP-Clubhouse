@@ -32,11 +32,13 @@ block content
         br
         br
 
+        a(href="/index/messages/" + user._id) Messages
+
         if (currentUser.membership_status === "VIP") && (currentUser._id.equals(user._id) === false)
             a(href="/index/user/" + user._id + "/update") Edit Membership Status
 
         else 
-            a(href="/index/user/" + user._id + "/update") Edit Details
+            a(href="/index/user/" + user._id + "/update") Edit Account
 
         a(href="/index/user/" + user._id + "/delete") Delete Account       
 

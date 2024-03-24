@@ -31,12 +31,21 @@ exports.user_detail = asyncHandler(async (req, res, next) => {
 
 // User Delete GET
 exports.user_delete_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Delete GET");
+
+    const [ user, messages ] = await Promise.all([
+
+        User.findById(req.params.id).exec(),
+        Message.find().exec()
+    ]);
+
+    res.render("user_delete", { user: user, messages: messages });
 });
 
 // User Delete POST
 exports.user_delete_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: User Delete POST");
+
+    await User.findByIdAndDelete(req.body.userId).exec();
+    res.redirect("/index");
 });
 
 // User Update GET

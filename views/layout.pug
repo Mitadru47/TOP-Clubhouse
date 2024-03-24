@@ -19,16 +19,16 @@ html
             if(currentUser)
                 
                 div#navlinks
+
+                    div 
+                        a(href="/index") Lobby
                 
                     div 
                         a(href="/index/users") Clubmates
                     
-                    div 
-                        a(href="/index") Messages
-
                     div#accountLink
                         a(href="/") Yo #{currentUser.firstname}!
 
-        hr
+        br
 
         block content

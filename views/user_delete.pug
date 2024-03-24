@@ -1,0 +1,70 @@
+extends layout 
+
+block content 
+
+    if currentUser && (user != null) && ((currentUser._id.equals(user._id) === true) || (currentUser.membership_status === "VIP"))
+    
+        h2 Delete Account 
+
+        p #[strong Name:] 
+        p #{user.firstname} #{user.lastname}
+
+        br
+
+        p #[strong Membership Status:]
+
+        if user.membership_status === ""
+            p Member
+        
+        else
+            p #{user.membership_status} 
+
+        br
+
+        p #[strong Username:] #{user.username}
+
+        if currentUser._id.equals(user._id)
+            p #[strong Password:] #{user.password}
+
+        else 
+            p #[strong Password:] [Redacted]
+        
+        br
+        br
+
+        div#messageCount
+
+            - var counter = 0
+
+            each message in messages
+                if message.creator.equals(user._id)
+                    - counter = counter + 1
+
+            if counter > 0
+
+                p Delete the message(s) tied to this account first! 
+                p Message(s): #{counter}
+
+                br
+
+                a(href="/index/messages/" + user._id) Messages
+
+            else 
+        
+                div#options
+
+                    p Are you sure?
+
+                    form(action="/index/user/" + user._id + "/delete" method="POST")
+
+                        input(type="hidden" value=user._id name="userId")
+
+                        button(type="submit") Delete
+                        a#cancelLink(href=user.url) Cancel
+
+    else 
+    
+        h2 Cannot Access Clubhouse!
+
+        a(href="/") Log in
+        a(href="/sign-up") Sign up

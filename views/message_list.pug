@@ -2,9 +2,13 @@ extends layout
 
 block content 
 
-    if(currentUser)
+    if currentUser
     
-        h2 My Messages
+        if messages.length === 0
+            h2 Messages
+        
+        else
+            h2 #{messages[0].creator.firstname}'s Messages
 
         if messages.length > 0
         
@@ -18,7 +22,7 @@ block content
                     p #{message.beautifiedDate}
 
         else 
-            p You have not created any messages yet!
+            p This account has no messages to display.
 
     else 
 
